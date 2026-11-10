@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Pack files
+*.tgz
+
+# Test output
+coverage/
+
+# Logs
+*.log
+npm-debug.log*
+
+# IDE and OS files
+.idea
+.vscode
+.DS_Store
+Thumbs.db
+
+# Local agent settings
+.claude/settings.local.json
+
+# Secrets: never commit
+.env
+.env.*
+!.env.example
+*.pem

@@ -1,0 +1,53 @@
+name: Bug report
+description: The assistant does something wrong or breaks the page.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Don't paste secrets, tokens, customer data or internal hostnames. Replace them with placeholders.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What you did, what you expected, and what you saw instead.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: The mount snippet, the relevant guide section or page context, and the question asked.
+      render: tsx
+    validations:
+      required: true
+  - type: input
+    id: package-version
+    attributes:
+      label: Package version
+      placeholder: 0.1.0
+    validations:
+      required: true
+  - type: input
+    id: mi-version
+    attributes:
+      label: Metric Insights version
+      placeholder: '7.2.1'
+  - type: input
+    id: environment
+    attributes:
+      label: Build tool and browser
+      placeholder: pp-dev 1.5.1 (Vite), Chrome 142
+  - type: dropdown
+    id: route
+    attributes:
+      label: Where did the answer come from?
+      options:
+        - LLM proxy (page and guide)
+        - MI Concierge
+        - Not sure / not applicable
+  - type: textarea
+    id: logs
+    attributes:
+      label: Console or network errors
+      render: text

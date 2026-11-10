@@ -1,0 +1,8 @@
+{
+  "callers": [
+    "ci",
+    "secret-scan",
+    "dependency-audit"
+  ],
+  "inputs": {}
+}

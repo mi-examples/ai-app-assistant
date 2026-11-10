@@ -1,0 +1,88 @@
+{
+  "name": "@metricinsights/ai-app-assistant",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Page assistant for Metric Insights portal pages: answers from the page and its guide, forwards the rest to Concierge.",
+  "keywords": [
+    "metricinsights",
+    "mi",
+    "portal-page",
+    "pp",
+    "assistant",
+    "concierge",
+    "ai",
+    "chat",
+    "react"
+  ],
+  "homepage": "https://github.com/mi-examples/ai-app-assistant#readme",
+  "bugs": {
+    "url": "https://github.com/mi-examples/ai-app-assistant/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mi-examples/ai-app-assistant.git"
+  },
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "types": "./src/index.ts",
+  "sideEffects": false,
+  "bin": {
+    "ai-app-assistant": "bin/add-skill.mjs"
+  },
+  "files": [
+    "src",
+    "!src/**/*.test.ts",
+    "!src/**/*.test.tsx",
+    "bin/add-skill.mjs",
+    "skills",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "check": "npm run lint && npm run typecheck && npm test",
+    "pack:check": "npm pack --dry-run",
+    "prepublishOnly": "npm run check"
+  },
+  "engines": {
+    "node": ">=22.12"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/react": "^16.3.3",
+    "@types/node": "^25.3.3",
+    "@types/react": "^18.2.55",
+    "@types/react-dom": "^18.2.19",
+    "@typescript-eslint/eslint-plugin": "^8.72.2",
+    "@typescript-eslint/parser": "^8.72.2",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "jsdom": "^26.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.102.0",
+    "typescript": "^5.3.3",
+    "vite": "^8.3.7",
+    "vitest": "^5.1.0"
+  }
+}

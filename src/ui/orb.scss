@@ -1,0 +1,92 @@
+// Plain global-class SCSS (not a module): imported into the Shadow DOM stylesheet.
+.aic-orb {
+  --aic-s: 34px;
+  --aic-ex: 0px;
+  --aic-ey: 0px;
+  --aic-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: inline-block;
+  flex: none;
+  position: relative;
+  width: var(--aic-s);
+  height: var(--aic-s);
+  border-radius: 50%;
+  background: linear-gradient(155deg, #7eaeff 0%, #4f8bf0 55%, #3d72db 100%);
+}
+
+.aic-orb__eyes {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: flex;
+  gap: calc(var(--aic-s) * 0.15);
+  transform: translate(calc(-50% + var(--aic-ex)), calc(-50% + var(--aic-ey)));
+  transition: transform 0.28s var(--aic-ease);
+
+  i {
+    display: block;
+    width: calc(var(--aic-s) * 0.14);
+    height: calc(var(--aic-s) * 0.25);
+    background: #fff;
+    border-radius: 99px;
+    transition:
+      transform 0.09s ease-in,
+      height 0.2s var(--aic-ease),
+      border-radius 0.2s var(--aic-ease);
+  }
+}
+
+.aic-orb--blink .aic-orb__eyes i {
+  transform: scaleY(0.1);
+}
+
+.aic-orb--happy .aic-orb__eyes i {
+  height: calc(var(--aic-s) * 0.11);
+  border-radius: 99px 99px 40% 40%;
+  transform: translateY(calc(var(--aic-s) * -0.03));
+}
+
+.aic-orb--wink .aic-orb__eyes i:last-child {
+  transform: scaleY(0.1);
+}
+
+.aic-orb--thinking .aic-orb__eyes {
+  animation: aic-orb-scan 1.05s ease-in-out infinite;
+}
+
+.aic-orb--bounce {
+  animation: aic-orb-bounce 0.55s var(--aic-ease);
+}
+
+@keyframes aic-orb-scan {
+  0%,
+  100% {
+    transform: translate(calc(-50% - var(--aic-s) * 0.13), calc(-50% - var(--aic-s) * 0.04));
+  }
+  50% {
+    transform: translate(calc(-50% + var(--aic-s) * 0.13), calc(-50% - var(--aic-s) * 0.04));
+  }
+}
+
+@keyframes aic-orb-bounce {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.12, 0.9);
+  }
+  60% {
+    transform: scale(0.95, 1.06);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aic-orb,
+  .aic-orb__eyes,
+  .aic-orb__eyes i {
+    animation: none !important;
+    transition: none !important;
+  }
+}

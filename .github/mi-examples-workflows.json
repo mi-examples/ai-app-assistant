@@ -2,7 +2,9 @@
   "callers": [
     "ci",
     "secret-scan",
-    "dependency-audit"
+    "dependency-audit",
+    "release",
+    "main-ahead-check"
   ],
   "inputs": {}
 }

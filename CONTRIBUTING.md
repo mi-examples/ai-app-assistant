@@ -99,14 +99,13 @@ there is no production release yet.
 - **One-time setup** is described in
   [npm-publishing.md](https://github.com/mi-examples/mi-examples-workflows/blob/main/docs/npm-publishing.md):
   the `npm-publish` environment and the npm trusted publisher for
-  `release.yml`. Then install the release caller:
+  `release.yml`. Don't rename `release.yml`: the trusted publisher is
+  registered for that filename.
 
-  ```sh
-  npx github:mi-examples/mi-examples-workflows --release
-  ```
-
-Once that is in place, every push to `develop` with a `feat` or `fix` commit
-publishes the next beta. Production releases follow the
+The release callers (`release.yml`, `main-ahead-check.yml`) are the same ones
+[pp-dev](https://github.com/mi-examples/pp-dev) uses. Once the one-time setup
+is done and a `develop` branch exists, every push to `develop` with a `feat`
+or `fix` commit publishes the next beta. Production releases follow the
 [shared release flow](https://github.com/mi-examples/mi-examples-workflows/blob/main/docs/workflows.md#release-workflows):
 run **Actions → Release → Run workflow**, review the release pull request
 and its `CHANGELOG.md` entry, and merge it. Merging publishes to npm with

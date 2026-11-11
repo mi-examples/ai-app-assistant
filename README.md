@@ -34,13 +34,13 @@ files.
 
 ## Install
 
-The package is not on npm yet. Once published:
+The package is in beta. Install the latest beta:
 
 ```sh
-npm install @metricinsights/ai-app-assistant
+npm install @metricinsights/ai-app-assistant@beta
 ```
 
-Until then, install it from a local checkout (npm links the folder):
+To try unreleased changes, install it from a local checkout (npm links the folder):
 
 ```sh
 npm install ../ai-app-assistant

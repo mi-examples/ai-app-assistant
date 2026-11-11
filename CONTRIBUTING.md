@@ -86,23 +86,26 @@ and re-run the installer; don't edit the callers by hand.
 npx github:mi-examples/mi-examples-workflows
 ```
 
-### Publishing (not set up yet)
+### Publishing
 
-The package has not been published. `"private": true` in `package.json`
-blocks `npm publish` until it is removed on purpose. To start publishing:
+The package is in beta. Betas are published to npm under the `beta` dist-tag;
+there is no production release yet.
 
-1. Remove `"private": true` from `package.json`.
-2. Do the one-time setup in
-   [npm-publishing.md](https://github.com/mi-examples/mi-examples-workflows/blob/main/docs/npm-publishing.md):
-   the first publish by hand, the `v0.1.0` tag, the `npm-publish` environment
-   and the npm trusted publisher for `release.yml`.
-3. Install the release caller:
+- **The version in `package.json` is a prerelease** (`0.1.0-beta.N`) until
+  the first production release. Keep it that way: the release workflow
+  publishes a production version it finds on `main`, and skips a prerelease.
+- **The first beta is published by hand**, because npm only accepts a trusted
+  publisher for a package that already exists.
+- **One-time setup** is described in
+  [npm-publishing.md](https://github.com/mi-examples/mi-examples-workflows/blob/main/docs/npm-publishing.md):
+  the `npm-publish` environment and the npm trusted publisher for
+  `release.yml`. Don't rename `release.yml`: the trusted publisher is
+  registered for that filename.
 
-   ```sh
-   npx github:mi-examples/mi-examples-workflows --release
-   ```
-
-After that, releases follow the
+The release callers (`release.yml`, `main-ahead-check.yml`) are the same ones
+[pp-dev](https://github.com/mi-examples/pp-dev) uses. Once the one-time setup
+is done and a `develop` branch exists, every push to `develop` with a `feat`
+or `fix` commit publishes the next beta. Production releases follow the
 [shared release flow](https://github.com/mi-examples/mi-examples-workflows/blob/main/docs/workflows.md#release-workflows):
 run **Actions → Release → Run workflow**, review the release pull request
 and its `CHANGELOG.md` entry, and merge it. Merging publishes to npm with

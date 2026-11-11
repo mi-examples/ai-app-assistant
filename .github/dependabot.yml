@@ -16,6 +16,17 @@ updates:
         patterns: ['@typescript-eslint/*']
       react:
         patterns: ['react', 'react-dom', '@types/react', '@types/react-dom']
+    ignore:
+      # A React major changes the peer range the package supports, so it is a
+      # deliberate change with code fixes, not an automatic update.
+      - dependency-name: 'react'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'react-dom'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '@types/react'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '@types/react-dom'
+        update-types: ['version-update:semver-major']
     commit-message:
       prefix: chore
       include: scope
